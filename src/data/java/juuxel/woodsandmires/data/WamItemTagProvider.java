@@ -27,12 +27,20 @@ public final class WamItemTagProvider extends FabricTagProvider.ItemTagProvider 
             .add(WamBlocks.PINE_LEAVES);
         builder(ItemTags.LOGS_THAT_BURN)
             .addTag(WamItemTags.PINE_LOGS);
+        builder(ItemTags.PLANKS)
+            .add(WamBlocks.PINE_PLANKS);
         builder(ItemTags.SAPLINGS)
             .add(WamBlocks.PINE_SAPLING);
         builder(ItemTags.SMALL_FLOWERS)
             .add(WamBlocks.HEATHER, WamBlocks.TANSY);
-        builder(ItemTags.BEE_FOOD)
-            .add(WamBlocks.FIREWEED);
+        builder(ItemTags.WOODEN_BUTTONS)
+            .add(WamBlocks.PINE_DOOR);
+        builder(ItemTags.WOODEN_FENCES)
+            .add(WamBlocks.PINE_SLAB);
+        builder(ItemTags.WOODEN_STAIRS)
+            .add(WamBlocks.PINE_STAIRS);
+        builder(ItemTags.WOODEN_TRAPDOORS)
+            .add(WamBlocks.PINE_TRAPDOOR);
 
         // WaM tags
         builder(WamItemTags.PINE_LOGS)
@@ -44,8 +52,6 @@ public final class WamItemTagProvider extends FabricTagProvider.ItemTagProvider 
             .add(WamBlocks.PINE_SNAG_LOG, WamBlocks.PINE_SNAG_WOOD);
 
         // Common tags
-        builder(CommonItemTags.CHAINS)
-            .add(Items.CHAIN);
         builder(CommonItemTags.HONEY)
             .add(WamItems.PINE_CONE_JAM);
         builder(CommonItemTags.JAMS)
@@ -54,8 +60,6 @@ public final class WamItemTagProvider extends FabricTagProvider.ItemTagProvider 
             .add(WamItems.PINE_CONE);
         builder(CommonItemTags.SUGAR)
             .add(Items.SUGAR);
-        builder(CommonItemTags.WOODEN_CHESTS)
-            .add(Items.CHEST, Items.TRAPPED_CHEST);
         builder(CommonItemTags.WOODEN_RODS)
             .add(Items.STICK);
     }

@@ -6,9 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
-import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
-import net.minecraft.loot.LootTable;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.BinomialLootNumberProvider;
@@ -27,6 +25,11 @@ public final class WamBlockLootTableProvider extends FabricBlockLootTableProvide
     public void generate() {
         addDrop(WamBlocks.PINE_LOG);
         addDrop(WamBlocks.AGED_PINE_LOG);
+        addDrop(WamBlocks.PINE_PLANKS);
+        addDrop(WamBlocks.PINE_SLAB, this::slabDrops);
+        addDrop(WamBlocks.PINE_STAIRS);
+        addDrop(WamBlocks.PINE_DOOR, this::doorDrops);
+        addDrop(WamBlocks.PINE_TRAPDOOR);
         addDrop(WamBlocks.PINE_LEAVES,
             block -> leavesDrops(block, WamBlocks.PINE_SAPLING, SAPLING_DROP_CHANCE)
                 .pool(addSurvivesExplosionCondition(WamItems.PINE_CONE, LootPool.builder()

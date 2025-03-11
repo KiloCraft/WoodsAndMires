@@ -7,12 +7,16 @@ import juuxel.woodsandmires.item.WamItemTags;
 import juuxel.woodsandmires.item.WamItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.data.family.BlockFamilies;
+import net.minecraft.data.family.BlockFamily;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,6 +24,14 @@ import java.util.concurrent.CompletableFuture;
 
 public final class WamRecipeProvider extends FabricRecipeProvider {
 
+    public static final BlockFamily PINE_FAMILY = BlockFamilies.register(WamBlocks.PINE_PLANKS)
+        .door(WamBlocks.PINE_DOOR)
+        .slab(WamBlocks.PINE_SLAB)
+        .stairs(WamBlocks.PINE_STAIRS)
+        .trapdoor(WamBlocks.PINE_TRAPDOOR)
+        .group("wooden")
+        .unlockCriterionName("has_planks")
+        .build();
 
     public WamRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
@@ -27,6 +39,7 @@ public final class WamRecipeProvider extends FabricRecipeProvider {
 
     @Override
     protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter exporter) {
+        FeatureSet enabledFeatures = FeatureSet.of(FeatureFlags.VANILLA);
         return new RecipeGenerator(wrapperLookup, exporter) {
             public void offerShapelessRecipe(RecipeExporter exporter, ItemConvertible output, ItemConvertible input, @Nullable String group, int outputCount) {
                createShapeless(RecipeCategory.MISC, output, outputCount)
@@ -39,6 +52,8 @@ public final class WamRecipeProvider extends FabricRecipeProvider {
             @Override
             public void generate() {
                 // Wooden
+                generateFamily(PINE_FAMILY, enabledFeatures);
+                offerPlanksRecipe(WamBlocks.PINE_PLANKS, WamItemTags.THICK_PINE_LOGS, 4);
 
                 createShapeless(RecipeCategory.BUILDING_BLOCKS, Items.BIRCH_PLANKS, 4)
                     .input(WamItemTags.THICK_PINE_LOGS).group("planks").criterion("has_logs", conditionsFromTag(WamItemTags.THICK_PINE_LOGS))
