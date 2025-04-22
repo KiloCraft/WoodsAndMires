@@ -32,7 +32,7 @@ public final class WamBlocks {
     public static final Block PINE_DOOR = register("pine_door", copyWoodSettings(Blocks.OAK_DOOR), (settings) -> new DoorBlock(WamBlockSetTypes.PINE, settings));
     public static final Block PINE_TRAPDOOR = register("pine_trapdoor", copyWoodSettings(Blocks.OAK_DOOR), (settings) -> new TrapdoorBlock(WamBlockSetTypes.PINE, settings));
     // Supplier for same reason as above
-    public static final Block PINE_LEAVES = register("pine_leaves", Blocks.createLeavesSettings(BlockSoundGroup.GRASS), LeavesBlock::new);
+    public static final Block PINE_LEAVES = register("pine_leaves", Blocks.createLeavesSettings(BlockSoundGroup.GRASS), s -> new TintedParticleLeavesBlock(0.01f, s));
     public static final Block PINE_SAPLING = register("pine_sapling", AbstractBlock.Settings.copy(Blocks.OAK_SAPLING), settings -> new SaplingBlock(new SaplingGenerator("pine", Optional.empty(), Optional.of(WamConfiguredFeatureKeys.PINE_FROM_SAPLING), Optional.empty()), settings));
     public static final Block POTTED_PINE_SAPLING = register("potted_pine_sapling", Blocks.createFlowerPotSettings(), settings -> new FlowerPotBlock(PINE_SAPLING, settings), null);
     public static final Block PINE_WOOD = register("pine_wood", copyWoodSettings(Blocks.OAK_WOOD), PillarBlock::new);
