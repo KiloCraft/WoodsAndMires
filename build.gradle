@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.10.+'
     id 'maven-publish'
+    id "me.modmuss50.mod-publish-plugin" version "0.8.4"
 }
 
 archivesBaseName = project.archives_base_name
