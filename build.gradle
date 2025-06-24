@@ -87,6 +87,20 @@ processResources {
     }
 }
 
+publishMods {
+    file = remapJar.archiveFile
+    type = STABLE
+    changelog = providers.environmentVariable("CHANGELOG").getOrElse("No changelog provided")
+
+    displayName = "WoodsAndMires ${version.get()}"
+
+    github {
+        accessToken = providers.environmentVariable("GITHUB_TOKEN")
+        repository = providers.environmentVariable("GITHUB_REPOSITORY").getOrElse("KiloCraft/WoodsAndMires")
+        commitish = providers.environmentVariable("GITHUB_REF_NAME").getOrElse("main")
+    }
+}
+
 java {
     withSourcesJar()
 
