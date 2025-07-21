@@ -23,69 +23,49 @@ public final class WamItemTagProvider extends FabricTagProvider.ItemTagProvider 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         // Minecraft tags
-        builder(ItemTags.LEAVES)
-            .add(WamBlocks.PINE_LEAVES);
-        builder(ItemTags.LOGS_THAT_BURN)
+        valueLookupBuilder(ItemTags.LEAVES)
+            .add(WamBlocks.PINE_LEAVES.asItem());
+        valueLookupBuilder(ItemTags.LOGS_THAT_BURN)
             .addTag(WamItemTags.PINE_LOGS);
-        builder(ItemTags.PLANKS)
-            .add(WamBlocks.PINE_PLANKS);
-        builder(ItemTags.SAPLINGS)
-            .add(WamBlocks.PINE_SAPLING);
-        builder(ItemTags.SMALL_FLOWERS)
-            .add(WamBlocks.HEATHER, WamBlocks.TANSY);
-        builder(ItemTags.WOODEN_BUTTONS)
-            .add(WamBlocks.PINE_DOOR);
-        builder(ItemTags.WOODEN_FENCES)
-            .add(WamBlocks.PINE_SLAB);
-        builder(ItemTags.WOODEN_STAIRS)
-            .add(WamBlocks.PINE_STAIRS);
-        builder(ItemTags.WOODEN_TRAPDOORS)
-            .add(WamBlocks.PINE_TRAPDOOR);
+        valueLookupBuilder(ItemTags.PLANKS)
+            .add(WamBlocks.PINE_PLANKS.asItem());
+        valueLookupBuilder(ItemTags.SAPLINGS)
+            .add(WamBlocks.PINE_SAPLING.asItem());
+        valueLookupBuilder(ItemTags.SMALL_FLOWERS)
+            .add(WamBlocks.HEATHER.asItem(), WamBlocks.TANSY.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_BUTTONS)
+            .add(WamBlocks.PINE_DOOR.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_FENCES)
+            .add(WamBlocks.PINE_SLAB.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_STAIRS)
+            .add(WamBlocks.PINE_STAIRS.asItem());
+        valueLookupBuilder(ItemTags.WOODEN_TRAPDOORS)
+            .add(WamBlocks.PINE_TRAPDOOR.asItem());
 
         // WaM tags
-        builder(WamItemTags.PINE_LOGS)
+        valueLookupBuilder(WamItemTags.PINE_LOGS)
             .addTag(WamItemTags.THICK_PINE_LOGS);
-        builder(WamItemTags.THICK_PINE_LOGS)
-            .add(WamBlocks.PINE_LOG, WamBlocks.AGED_PINE_LOG)
-            .add(WamBlocks.PINE_WOOD, WamBlocks.AGED_PINE_WOOD)
-            .add(WamBlocks.STRIPPED_PINE_LOG, WamBlocks.STRIPPED_PINE_WOOD)
-            .add(WamBlocks.PINE_SNAG_LOG, WamBlocks.PINE_SNAG_WOOD);
+        valueLookupBuilder(WamItemTags.THICK_PINE_LOGS)
+            .add(WamBlocks.PINE_LOG.asItem(), WamBlocks.AGED_PINE_LOG.asItem())
+            .add(WamBlocks.PINE_WOOD.asItem(), WamBlocks.AGED_PINE_WOOD.asItem())
+            .add(WamBlocks.STRIPPED_PINE_LOG.asItem(), WamBlocks.STRIPPED_PINE_WOOD.asItem())
+            .add(WamBlocks.PINE_SNAG_LOG.asItem(), WamBlocks.PINE_SNAG_WOOD.asItem());
 
         // Common tags
-        builder(CommonItemTags.HONEY)
+        valueLookupBuilder(CommonItemTags.CHAINS)
+            .add(Items.CHAIN);
+        valueLookupBuilder(CommonItemTags.HONEY)
             .add(WamItems.PINE_CONE_JAM);
-        builder(CommonItemTags.JAMS)
+        valueLookupBuilder(CommonItemTags.JAMS)
             .add(WamItems.PINE_CONE_JAM);
-        builder(CommonItemTags.PINE_CONES)
+        valueLookupBuilder(CommonItemTags.PINE_CONES)
             .add(WamItems.PINE_CONE);
-        builder(CommonItemTags.SUGAR)
+        valueLookupBuilder(CommonItemTags.SUGAR)
             .add(Items.SUGAR);
-        builder(CommonItemTags.WOODEN_RODS)
+        valueLookupBuilder(CommonItemTags.WOODEN_CHESTS)
+            .add(Items.CHEST, Items.TRAPPED_CHEST);
+        valueLookupBuilder(CommonItemTags.WOODEN_RODS)
             .add(Items.STICK);
     }
-
-    private Builder builder(TagKey<Item> tag) {
-        return new Builder(getOrCreateTagBuilder(tag));
-    }
-
-    private static final class Builder {
-        private final FabricTagProvider<Item>.FabricTagBuilder parent;
-
-        private Builder(FabricTagProvider<Item>.FabricTagBuilder parent) {
-            this.parent = parent;
-        }
-
-        public Builder add(ItemConvertible... items) {
-            for (ItemConvertible item : items) {
-                parent.add(item.asItem());
-            }
-
-            return this;
-        }
-
-        public Builder addTag(TagKey<Item> tag) {
-            parent.addTag(tag);
-            return this;
-        }
-    }
+    
 }

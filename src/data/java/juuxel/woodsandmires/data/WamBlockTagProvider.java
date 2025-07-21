@@ -18,42 +18,42 @@ public final class WamBlockTagProvider extends FabricTagProvider.BlockTagProvide
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         // Minecraft tags
-        getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
+        valueLookupBuilder(BlockTags.FLOWER_POTS)
             .add(WamBlocks.POTTED_PINE_SAPLING)
             .add(WamBlocks.POTTED_TANSY)
             .add(WamBlocks.POTTED_FELL_LICHEN)
             .add(WamBlocks.POTTED_HEATHER);
-        getOrCreateTagBuilder(BlockTags.LEAVES)
+        valueLookupBuilder(BlockTags.LEAVES)
             .add(WamBlocks.PINE_LEAVES);
-        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+        valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
             .addTag(WamBlockTags.PINE_LOGS);
-        getOrCreateTagBuilder(BlockTags.MUSHROOM_GROW_BLOCK)
+        valueLookupBuilder(BlockTags.MUSHROOM_GROW_BLOCK)
             .addTag(WamBlockTags.THICK_PINE_LOGS);
-        getOrCreateTagBuilder(BlockTags.PLANKS)
+        valueLookupBuilder(BlockTags.PLANKS)
             .add(WamBlocks.PINE_PLANKS);
-        getOrCreateTagBuilder(BlockTags.SAPLINGS)
+        valueLookupBuilder(BlockTags.SAPLINGS)
             .add(WamBlocks.PINE_SAPLING);
-        getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
+        valueLookupBuilder(BlockTags.SMALL_FLOWERS)
             .add(WamBlocks.HEATHER, WamBlocks.TANSY);
-        getOrCreateTagBuilder(BlockTags.STANDING_SIGNS)
+        valueLookupBuilder(BlockTags.STANDING_SIGNS)
             .add(WamBlocks.FIREWEED);
-        getOrCreateTagBuilder(BlockTags.WALL_SIGNS)
+        valueLookupBuilder(BlockTags.WALL_SIGNS)
             .add(WamBlocks.PINE_DOOR);
-        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
+        valueLookupBuilder(BlockTags.WOODEN_FENCES)
             .add(WamBlocks.PINE_SLAB);
-        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
+        valueLookupBuilder(BlockTags.WOODEN_STAIRS)
             .add(WamBlocks.PINE_STAIRS);
-        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
+        valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
             .add(WamBlocks.PINE_TRAPDOOR);
 
         // WaM tags
-        getOrCreateTagBuilder(WamBlockTags.LICHEN_PLANTABLE_ON)
+        valueLookupBuilder(WamBlockTags.LICHEN_PLANTABLE_ON)
             .forceAddTag(BlockTags.DIRT)
             .add(Blocks.FARMLAND)
             .forceAddTag(BlockTags.BASE_STONE_OVERWORLD);
-        getOrCreateTagBuilder(WamBlockTags.PINE_LOGS)
+        valueLookupBuilder(WamBlockTags.PINE_LOGS)
             .addTag(WamBlockTags.THICK_PINE_LOGS);
-        getOrCreateTagBuilder(WamBlockTags.THICK_PINE_LOGS)
+        valueLookupBuilder(WamBlockTags.THICK_PINE_LOGS)
             .add(WamBlocks.PINE_LOG, WamBlocks.AGED_PINE_LOG)
             .add(WamBlocks.PINE_WOOD, WamBlocks.AGED_PINE_WOOD)
             .add(WamBlocks.STRIPPED_PINE_LOG, WamBlocks.STRIPPED_PINE_WOOD)

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "terrestria:pine_to_planks"
+        "recipe": "woods_and_mires:pine_to_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "terrestria:pine_to_planks"
+      "woods_and_mires:pine_to_planks"
     ]
   }
 }
