@@ -105,8 +105,8 @@ publishMods {
 java {
     withSourcesJar()
 
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 // ensure that the encoding is set to UTF-8, no matter what the system default is
@@ -114,7 +114,7 @@ java {
 // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
-    options.release = 17
+    options.release = 21
 }
 
 jar {
